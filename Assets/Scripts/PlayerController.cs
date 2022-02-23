@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public float currentDashInvicibilityTime = STANDARD_DASH_INVICIBILITY_TIME;
 
     private Rigidbody rbPlayer;
+    public GameObject compass;
 
 
     // Start is called before the first frame update
@@ -60,8 +61,8 @@ public class PlayerController : MonoBehaviour
         // movement 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        // FIXME rotation of the model make this code not work as intended...
-        transform.Translate(new Vector3(1 * Time.deltaTime * currentMoveSpeed * horizontalInput, 0 , 1 * Time.deltaTime * currentMoveSpeed * verticalInput));
+        transform.position += compass.transform.forward * -1 * Time.deltaTime * currentMoveSpeed * horizontalInput
+                + compass.transform.right * Time.deltaTime * currentMoveSpeed * verticalInput;
 
         // player dash 
         if(Input.GetKeyDown(KeyCode.Space)){
@@ -78,7 +79,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // rotation following the mouse
-        // FIXME the character is off rotated of roughly 90°
         Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.down);
