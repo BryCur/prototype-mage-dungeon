@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         // TODO define "ultimate"... depending on shooting attributes? available loot
     };
 
+    #region Constant declarations
     private const float STANDARD_MOVE_SPEED = 20.0f; // moving speed in standard stance
     private const float AGILE_MOVE_SPEED = 30.0f; // moving speed in agile stance
 
@@ -37,22 +38,27 @@ public class PlayerController : MonoBehaviour
     private const float AGILE_DASH_FORCE = 30.0f; // Dash force in agile stance
     private const float AGILE_DASH_DURATION = 30.0f; // Dash force in agile stance
     private const float AGILE_DASH_INVICIBILITY_TIME = 30.0f; // Dash invincibility time in agile stance
+        
+    #endregion
 
     // TODO set properties private 
-    public Stance currentStance = Stance.Standard; 
-    public float currentMoveSpeed = STANDARD_MOVE_SPEED;
-    public float currentDashForce = STANDARD_DASH_FORCE;
-    public float currentDashDuration = STANDARD_DASH_FORCE;
-    public float currentDashInvicibilityTime = STANDARD_DASH_INVICIBILITY_TIME;
+    private Stance currentStance = Stance.Standard; 
+    private float currentMoveSpeed = STANDARD_MOVE_SPEED;
+    private float currentDashForce = STANDARD_DASH_FORCE;
+    private float currentDashDuration = STANDARD_DASH_FORCE;
+    private float currentDashInvicibilityTime = STANDARD_DASH_INVICIBILITY_TIME;
 
     private Rigidbody rbPlayer;
     public GameObject compass;
+    public GameObject primaryShootingSource;
+    public GameObject secondaryShootingSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody>();
+        changeStance(Stance.Standard);
     }
 
     // Update is called once per frame
@@ -64,7 +70,7 @@ public class PlayerController : MonoBehaviour
         transform.position += compass.transform.forward * -1 * Time.deltaTime * currentMoveSpeed * horizontalInput
                 + compass.transform.right * Time.deltaTime * currentMoveSpeed * verticalInput;
 
-        // player dash 
+        // TODO player dash - finish it
         if(Input.GetKeyDown(KeyCode.Space)){
             Debug.Log("dash!");
             // how to do a dash?
@@ -81,7 +87,7 @@ public class PlayerController : MonoBehaviour
         // rotation following the mouse
         Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.down);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.down); // ASK Quaternion? kekece?
     }
 
     /**
@@ -94,6 +100,9 @@ public class PlayerController : MonoBehaviour
                 currentDashInvicibilityTime = AGILE_DASH_INVICIBILITY_TIME;
                 currentMoveSpeed = AGILE_MOVE_SPEED;
                 currentStance = Stance.Agile;
+
+                primaryShootingSource.gameObject.SetActive(false);
+                secondaryShootingSource.gameObject.SetActive(false);
                 break;
 
             case Stance.Standard:
@@ -101,13 +110,21 @@ public class PlayerController : MonoBehaviour
                 currentDashInvicibilityTime = STANDARD_DASH_INVICIBILITY_TIME;
                 currentMoveSpeed = STANDARD_MOVE_SPEED;
                 currentStance = Stance.Standard;
+                primaryShootingSource.gameObject.SetActive(true);
+                secondaryShootingSource.gameObject.SetActive(false);
                 break;
             case Stance.Stationary:
                 currentDashForce = 0;
                 currentDashInvicibilityTime = 0;
                 currentMoveSpeed = 0;
                 currentStance = Stance.Stationary;
+                primaryShootingSource.gameObject.SetActive(true);
+                secondaryShootingSource.gameObject.SetActive(true);
                 break;
         }
+    }
+
+    public Stance getCurrentStance(){
+        return currentStance;
     }
 }
