@@ -38,7 +38,7 @@ public class SecondarySourceController : MonoBehaviour
 
 
     private void Fire(){
-        Debug.Log("fire secondary");
+        // Debug.Log("fire secondary");
         Instantiate(pfProjectile, transform.position, transform.rotation);
         lastShootTime = Time.time;
     }

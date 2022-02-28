@@ -22,4 +22,9 @@ public class ProjectileController : MonoBehaviour
     private void OnBecameInvisible() {
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter(Collision other) {
+        Debug.Log("projectile collided");
+        Destroy(gameObject);
+    }
 }

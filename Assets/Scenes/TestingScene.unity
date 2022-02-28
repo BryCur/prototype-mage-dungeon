@@ -883,6 +883,7 @@ GameObject:
   - component: {fileID: 1011476348}
   - component: {fileID: 1011476347}
   - component: {fileID: 1011476346}
+  - component: {fileID: 1011476349}
   m_Layer: 0
   m_Name: SecondaryShootingSource
   m_TagString: Untagged
@@ -913,7 +914,7 @@ SphereCollider:
   m_GameObject: {fileID: 1011476344}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -966,6 +967,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011476344}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1011476349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011476344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71093f3bc6aca0545ba874657434a309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1334883587}
+  pfProjectile: {fileID: 5256399952842190738, guid: 63b083a16a19f034dadb1a19802a5572, type: 3}
 --- !u!1 &1077538382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1652,7 @@ SphereCollider:
   m_GameObject: {fileID: 1793020824}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
