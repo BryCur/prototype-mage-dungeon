@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
+    
     private GameObject target;
     protected float movespeed = 10.0f;
     // Start is called before the first frame update
@@ -20,6 +21,10 @@ public class BasicEnemyController : MonoBehaviour
         Vector3 targetDirection = (posTarget - transform.position).normalized;
 
         transform.position += targetDirection * Time.deltaTime * movespeed;
+        
+        // FIXME rotate enemy so they face the player - rotation is sloppy...
+        Quaternion rot = Quaternion.LookRotation(posTarget);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 1);
     }
 
     private void OnTriggerEnter(Collider other) {

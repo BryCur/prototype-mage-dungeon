@@ -31,7 +31,7 @@ public class PrimarysourceController : MonoBehaviour
 
 
     private void Fire(){
-        Debug.Log("fire primary");
+        // Debug.Log("fire primary");
         Instantiate(pfProjectile, transform.position, transform.rotation);
         lastShootTime = Time.time;
     }

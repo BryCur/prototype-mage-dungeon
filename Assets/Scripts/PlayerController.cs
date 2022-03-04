@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private const float AGILE_MOVE_SPEED = 30.0f; // moving speed in agile stance
 
     private const float STANDARD_DASH_FORCE = 300.0f; // Dash force in standard stance
-    private const float STANDARD_DASH_DURATION = 0.15f; // Dash force in standard stance
+    private const float STANDARD_DASH_DURATION = 0.1f; // Dash force in standard stance
     private const float STANDARD_DASH_INVICIBILITY_TIME = 30.0f; // Dash invincibility time in standard stance
     private const float AGILE_DASH_FORCE = 300.0f; // Dash force in agile stance
     private const float AGILE_DASH_DURATION = 0.7f; // Dash force in agile stance
@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour
         Vector3 dashDirection;
 
         // dash in the moving direction, if no input, in the direction faced by the model (towards the mouse cursor)
+        // TODO invincibility time
         if(horizontalInput != 0 || verticalInput != 0){
             dashDirection = new Vector3(horizontalInput, 0, verticalInput);
         } else {
