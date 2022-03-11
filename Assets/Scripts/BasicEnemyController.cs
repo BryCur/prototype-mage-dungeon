@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicEnemyController : MonoBehaviour
 {
     
     private GameObject target;
+    public float currentHealth = 10;
+    public float maxHealth = 10;
+    public GameObject goHealthBar;
+    public Slider healthSlider;
     protected float movespeed = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.Find("Player");
+        
+        currentHealth = 10;
+        maxHealth= 10;
+        goHealthBar.SetActive(false);
+        healthSlider.value = CalculateHealth();
     }
 
     // Update is called once per frame
@@ -32,7 +42,26 @@ public class BasicEnemyController : MonoBehaviour
         Debug.Log("enemy collision?");
         if(other.gameObject.CompareTag("projectile")){
             Debug.Log("enemy taking damage");
-            Destroy(gameObject);
+
+            currentHealth--;
+            
+            if(currentHealth < maxHealth){
+                goHealthBar.SetActive(true);
+            }
+
+            if(currentHealth <= 0){
+                Destroy(gameObject);
+            }
+
+            if(currentHealth > maxHealth){
+                currentHealth = maxHealth;
+            }
+
+            healthSlider.value = CalculateHealth();
         }
+    }
+
+    private float CalculateHealth(){
+        return currentHealth / maxHealth;
     }
 }
