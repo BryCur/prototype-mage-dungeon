@@ -31,12 +31,14 @@ public class PlayerController : MonoBehaviour
     #region Constant declarations
     private const float STANDARD_MOVE_SPEED = 20.0f; // moving speed in standard stance
     private const float AGILE_MOVE_SPEED = 30.0f; // moving speed in agile stance
+    private const float STATIONARY_MOVE_SPEED = 1.0f; // moving speed in satationary stance
 
-    private const float STANDARD_DASH_FORCE = 300.0f; // Dash force in standard stance
+    private const float STANDARD_DASH_FORCE = 200.0f; // Dash force in standard stance
     private const float STANDARD_DASH_DURATION = 0.1f; // Dash force in standard stance
     private const float STANDARD_DASH_INVICIBILITY_TIME = 30.0f; // Dash invincibility time in standard stance
-    private const float AGILE_DASH_FORCE = 300.0f; // Dash force in agile stance
-    private const float AGILE_DASH_DURATION = 0.7f; // Dash force in agile stance
+
+    private const float AGILE_DASH_FORCE = 200.0f; // Dash force in agile stance
+    private const float AGILE_DASH_DURATION = 0.1f; // Dash force in agile stance
     private const float AGILE_DASH_INVICIBILITY_TIME = 30.0f; // Dash invincibility time in agile stance
         
     #endregion

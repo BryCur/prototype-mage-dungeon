@@ -58,6 +58,8 @@ public class BasicEnemyController : MonoBehaviour
             }
 
             healthSlider.value = CalculateHealth();
+
+            Destroy(other.gameObject);
         }
     }
 
