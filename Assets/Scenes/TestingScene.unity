@@ -1913,6 +1913,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1334883587}
+    - target: {fileID: 4151208235882487527, guid: e87e82f98b1330443a60719f214c2bd6, type: 3}
+      propertyPath: pfProjectile
+      value: 
+      objectReference: {fileID: 5256399952842190738, guid: 88dee3bba29d4ee45a5df1b3eb750b1f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e87e82f98b1330443a60719f214c2bd6, type: 3}
 --- !u!1001 &6879143643999006224

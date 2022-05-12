@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    public float projectileSpeed = 15.0f;
+    [SerializeField] protected float projectileSpeed = 15.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision other) {
+    protected void OnCollisionEnter(Collision other) {
         Debug.Log("projectile collided");
         Destroy(gameObject);
     }
