@@ -6,9 +6,9 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
 
-    private float xOffset = 0.0f;
-    private float zOffset = -25.0f;
-    private float yOffset = 40.0f;
+    [SerializeField] float xOffset = 0.0f;
+    [SerializeField] float zOffset = -25.0f;
+    [SerializeField] float yOffset = 60.0f;
     // Start is called before the first frame update
     void Start()
     {

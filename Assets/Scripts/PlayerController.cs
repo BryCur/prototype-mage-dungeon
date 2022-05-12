@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
             case Stance.Stationary:
                 currentDashForce = 0;
                 currentDashInvicibilityTime = 0;
-                currentMoveSpeed = 0;
+                currentMoveSpeed = STATIONARY_MOVE_SPEED;
                 currentStance = Stance.Stationary;
                 primaryShootingSource.gameObject.SetActive(true);
                 secondaryShootingSource.gameObject.SetActive(true);
